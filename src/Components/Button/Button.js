@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Button = (props) => {
 	return (
-		<a className={props.classStyle} href={props.to}>
+		<Link className={props.classStyle} to={props.to}>
 			{props.children}
-		</a>
+		</Link>
 	);
 };
 
