@@ -15,7 +15,7 @@ function Nav() {
 		<div className="container">
 			<div className="Logo">
 				<h2>
-					geeky<span className="logo-head">STORE</span>
+					flash<span className="logo-head">STORE</span>
 				</h2>
 				<FaBars className="toggler" onClick={navToggleHandler} />
 			</div>
