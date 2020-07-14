@@ -48,31 +48,47 @@ class PhoneProvider extends Component {
 		}
 	};
 
-	getLowestPrice = () => {
+	getLowestPrice = (val) => {
 		// console.log('In the Lowest Prcie');
-		const oldState = { ...this.state };
-		const getLowestPrice = oldState.phones.sort((phn1, phn2) => phn1.field.price - phn2.field.price);
-		// console.log(getLowestPrice);
-		this.setState({ sortedPhones: getLowestPrice });
-		// console.log(this.state.phones);
+		if (val) {
+			const oldState = { ...this.state };
+			const getLowestPrice = oldState.phones.sort((phn1, phn2) => phn1.field.price - phn2.field.price);
+			// console.log(getLowestPrice);
+			this.setState({ sortedPhones: getLowestPrice });
+			// console.log(this.state.phones);
+		} else {
+			this.setState({ sortedPhones: data });
+		}
 	};
-	getHighestPrice = () => {
-		const oldState = { ...this.state };
-		const getHighestPrice = oldState.phones.sort((phn1, phn2) => phn2.field.price - phn1.field.price);
-		this.setState({ sortedPhones: getHighestPrice });
+	getHighestPrice = (val) => {
+		if (val) {
+			const oldState = { ...this.state };
+			const getHighestPrice = oldState.phones.sort((phn1, phn2) => phn2.field.price - phn1.field.price);
+			this.setState({ sortedPhones: getHighestPrice });
+		} else {
+			this.setState({ sortedPhones: data });
+		}
 	};
 
-	getFreeDelivery = () => {
-		const oldState = { ...this.state };
-		const freeDeliveryPhones = oldState.phones.filter((phn) => phn.field.freeDelivery);
-		// console.log(freeDeliveryPhones);
-		this.setState({ sortedPhones: freeDeliveryPhones });
+	getFreeDelivery = (val) => {
+		if (val) {
+			const oldState = { ...this.state };
+			const freeDeliveryPhones = oldState.phones.filter((phn) => phn.field.freeDelivery);
+			// console.log(freeDeliveryPhones);
+			this.setState({ sortedPhones: freeDeliveryPhones });
+		} else {
+			this.setState({ sortedPhones: data });
+		}
 	};
-	getPopularPhones = () => {
-		const oldState = { ...this.state };
-		const popularPhones = oldState.phones.filter((phn) => phn.field.featured);
-		// console.log(popularPhones);
-		this.setState({ sortedPhones: popularPhones });
+	getPopularPhones = (val) => {
+		if (val) {
+			const oldState = { ...this.state };
+			const popularPhones = oldState.phones.filter((phn) => phn.field.featured);
+			// console.log(popularPhones);
+			this.setState({ sortedPhones: popularPhones });
+		} else {
+			this.setState({ sortedPhones: data });
+		}
 	};
 
 	handleChange = (event) => {
@@ -80,16 +96,18 @@ class PhoneProvider extends Component {
 
 		const name = event.target.name;
 
-		const value = event.target.value;
+		const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
+		// const value = event.target.value;
 
 		// console.log(value);
 		// console.log(type);
 		// console.log(name);
 
-		if (name === 'lowestPrice') this.getLowestPrice();
-		else if (name === 'highestPrice') this.getHighestPrice();
-		else if (name === 'freeDelivery') this.getFreeDelivery();
-		else if (name === 'popular') this.getPopularPhones();
+		if (name === 'lowestPrice') this.getLowestPrice(value);
+		else if (name === 'highestPrice') this.getHighestPrice(value);
+		else if (name === 'freeDelivery') this.getFreeDelivery(value);
+		else if (name === 'popular') this.getPopularPhones(value);
 		else {
 			// console.log(name);
 			// console.log(value);
