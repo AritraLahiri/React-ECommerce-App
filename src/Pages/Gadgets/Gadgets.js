@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Banner from '../../Components/Banner/Banner';
 import StyledHero from '../../Components/StyledHero/StyleHero';
 import phoneImg from '../../assets/phone4.png';
@@ -7,26 +7,20 @@ import Sorting from '../../Components/Sorting/Sorting';
 import UI from '../../Components/Sorting/UI/UI';
 import Title from '../../Components/Title/Title';
 import { FcExpand } from 'react-icons/fc';
+import { PhoneContext } from '../../Context';
 
 function Gadgets() {
-	const [ Sort, setSort ] = useState({
-		isOpen: true
-	});
-
-	let isOpenSort = () => {
-		setSort({ isOpen: !Sort.isOpen });
-	};
-
+	const { isSortOpen, sortTogglerHandler } = useContext(PhoneContext);
 	return (
 		<React.Fragment>
 			<StyledHero img={phoneImg}>
 				<Banner heading="latest phones" to="/" btnName="back home" />
 			</StyledHero>
 			<Title>
-				filter by <FcExpand className="sort-icon" onClick={isOpenSort} />
+				filter by <FcExpand className="sort-icon" onClick={sortTogglerHandler} />
 			</Title>
 
-			<UI show={Sort.isOpen}>
+			<UI show={isSortOpen}>
 				<Sorting label="Brands" inputType="select" tag="type" />
 				<Sorting label="Ram" inputType="select" tag="RAM" />
 				<Sorting label="Popular" inputType="checkbox" tag="popular" />

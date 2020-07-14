@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Home from './Pages/Home/Home';
 import Gadgets from './Pages/Gadgets/Gadgets';
-import Nav from './Components/Nav/Nav';
+import Nav from './Container/Nav/Nav';
 import { Route, Switch } from 'react-router-dom';
 import SingleGadget from './Pages/Single Gadget/SingleGadget';
 import Error from './Pages/Error/Error';

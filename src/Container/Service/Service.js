@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FcAbout, FcCheckmark, FcPhone, FcShipped } from 'react-icons/fc';
-import Title from '../Title/Title';
+import Title from '../../Components/Title/Title';
 
-function Service(props) {
+const Service = () => {
 	const [ state ] = useState({
 		Services: [
 			{
@@ -44,6 +44,6 @@ function Service(props) {
 			<div className="service-cont">{service}</div>
 		</section>
 	);
-}
+};
 
 export default Service;

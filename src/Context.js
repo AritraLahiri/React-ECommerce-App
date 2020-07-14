@@ -9,13 +9,19 @@ class PhoneProvider extends Component {
 		featured: [],
 		sortedPhones: data,
 		optionValue: 'all',
-		loading: true
+		loading: true,
+		isSortOpen: true
 	};
 
 	componentDidMount() {
 		const featuredPhones = data.filter((phone) => phone.field.featured);
 		this.setState({ featured: featuredPhones });
 	}
+
+	sortTogglerHandler = () => {
+		this.setState({ isSortOpen: !this.state.isSortOpen });
+	};
+
 	getPhones = (slug) => {
 		const oldState = { ...this.state };
 		const singlePhone = oldState.phones.find((phn) => phn.field.slug === slug);
@@ -97,6 +103,7 @@ class PhoneProvider extends Component {
 				value={{
 					...this.state,
 					getPhones: this.getPhones,
+					sortTogglerHandler: this.sortTogglerHandler,
 					handleChange: this.handleChange
 				}}
 			>
