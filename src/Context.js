@@ -7,7 +7,7 @@ class PhoneProvider extends Component {
 	state = {
 		phones: data,
 		featured: [],
-		sortedPhones: [],
+		sortedPhones: data,
 		optionValue: 'all',
 		loading: true
 	};
@@ -34,11 +34,11 @@ class PhoneProvider extends Component {
 		if (val !== 'All') {
 			const updatedPhones = oldState.phones.filter((phn) => phn.field[name] === val);
 			// console.log(updatedPhones);
-			this.setState({ phones: updatedPhones, optionValue: val });
+			this.setState({ sortedPhones: updatedPhones, optionValue: val });
 		}
 		if (val === 'All') {
 			// console.log('Clicked on All');
-			this.setState({ phones: data, optionValue: 'All' });
+			this.setState({ sortedPhones: data, optionValue: 'All' });
 		}
 	};
 
@@ -47,26 +47,26 @@ class PhoneProvider extends Component {
 		const oldState = { ...this.state };
 		const getLowestPrice = oldState.phones.sort((phn1, phn2) => phn1.field.price - phn2.field.price);
 		// console.log(getLowestPrice);
-		this.setState({ phones: getLowestPrice });
+		this.setState({ sortedPhones: getLowestPrice });
 		// console.log(this.state.phones);
 	};
 	getHighestPrice = () => {
 		const oldState = { ...this.state };
 		const getHighestPrice = oldState.phones.sort((phn1, phn2) => phn2.field.price - phn1.field.price);
-		this.setState({ phones: getHighestPrice });
+		this.setState({ sortedPhones: getHighestPrice });
 	};
 
 	getFreeDelivery = () => {
 		const oldState = { ...this.state };
 		const freeDeliveryPhones = oldState.phones.filter((phn) => phn.field.freeDelivery);
 		// console.log(freeDeliveryPhones);
-		this.setState({ phones: freeDeliveryPhones });
+		this.setState({ sortedPhones: freeDeliveryPhones });
 	};
 	getPopularPhones = () => {
 		const oldState = { ...this.state };
 		const popularPhones = oldState.phones.filter((phn) => phn.field.featured);
 		// console.log(popularPhones);
-		this.setState({ phones: popularPhones });
+		this.setState({ sortedPhones: popularPhones });
 	};
 
 	handleChange = (event) => {
