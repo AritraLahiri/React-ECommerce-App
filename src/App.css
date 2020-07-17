@@ -454,14 +454,9 @@ a {
 	font-size: 20px;
 	margin: auto;
 }
-
-.sort-close .sort-icon {
-	transform: translateY(-50%) rotate(180deg);
-}
 .sort-close {
 	opacity: 0;
-	overflow-y: hidden;
-	max-height: 0;
+	/* overflow-y: hidden; */
 }
 
 @media (max-width: 760px) {
@@ -487,3 +482,10 @@ a {
 }
 
 /* Sorting Part Ends Here */
+
+/* Loading Starts Here */
+.loading {
+	width: 100%;
+}
+
+/* Loading Ends Here */

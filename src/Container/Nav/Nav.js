@@ -23,8 +23,8 @@ function Nav() {
 				<Link to="/">
 					<Navitems>Home</Navitems>
 				</Link>
-				<Link to="/gadget">
-					<Navitems>Gadgets</Navitems>
+				<Link to="/phone">
+					<Navitems>Phones</Navitems>
 				</Link>
 			</div>
 		</div>

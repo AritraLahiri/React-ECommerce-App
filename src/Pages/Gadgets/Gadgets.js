@@ -22,7 +22,7 @@ function Gadgets() {
 
 			<UI show={isSortOpen}>
 				<Sorting label="Brands" inputType="select" tag="type" />
-				<Sorting label="Ram" inputType="select" tag="RAM" />
+				<Sorting label="Ram" inputType="select" tag="ram" />
 				<Sorting label="Popular" inputType="checkbox" tag="popular" />
 				<Sorting label="Free Delivery" inputType="checkbox" tag="freeDelivery" />
 				<Sorting label="Low to high" inputType="checkbox" tag="lowestPrice" />

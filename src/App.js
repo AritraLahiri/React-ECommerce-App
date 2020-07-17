@@ -13,7 +13,7 @@ function App() {
 			<Nav />
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/gadget" component={Gadgets} />
+				<Route exact path="/phone" component={Gadgets} />
 				<Route exact path="/gadget/:slug" component={SingleGadget} />
 				<Route component={Error} />
 			</Switch>

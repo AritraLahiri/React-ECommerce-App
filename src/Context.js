@@ -1,30 +1,67 @@
 import React, { Component } from 'react';
-import data from './data';
+// import data from './data';
+import createClient from './Contentful';
 
 const PhoneContext = React.createContext();
 
 class PhoneProvider extends Component {
 	state = {
-		phones: data,
+		phones: [],
 		featured: [],
-		sortedPhones: data,
+		sortedPhones: [],
 		optionValue: 'all',
 		loading: true,
 		isSortOpen: true
 	};
 
+	getData = async () => {
+		// console.log('In the get data');
+		try {
+			const response = await createClient.getEntries({
+				content_type: 'mobileEcommerceApp'
+			});
+			// console.log(response.items);
+			const phones = this.formatData(response.items);
+
+			const featuredPhones = phones.filter((phone) => phone.field.featured);
+
+			this.setState({ featured: featuredPhones, sortedPhones: phones, phones, loading: false });
+		} catch (error) {
+			console.log(error);
+			this.setState({ loading: true });
+			throw error;
+		}
+	};
+
 	componentDidMount() {
-		const featuredPhones = data.filter((phone) => phone.field.featured);
-		this.setState({ featured: featuredPhones });
+		this.getData();
 	}
 
+	formatData = (dataContent) => {
+		const data = dataContent.map((ele) => {
+			let id = ele.sys.id;
+			let images = ele.fields.images.map((img) => img.fields.file.url);
+
+			let field = { ...ele.fields, images: images };
+
+			let formatedData = { field, id };
+
+			return formatedData;
+		});
+
+		return data;
+	};
+
 	sortTogglerHandler = () => {
-		this.setState({ isSortOpen: !this.state.isSortOpen });
+		this.setState((prevState) => {
+			return { isSortOpen: !prevState.isSortOpen };
+		});
 	};
 
 	getPhones = (slug) => {
 		const oldState = { ...this.state };
 		const singlePhone = oldState.phones.find((phn) => phn.field.slug === slug);
+		// console.log(singlePhone);
 		return singlePhone;
 	};
 
@@ -44,50 +81,67 @@ class PhoneProvider extends Component {
 		}
 		if (val === 'All') {
 			// console.log('Clicked on All');
-			this.setState({ sortedPhones: data, optionValue: 'All' });
+
+			this.setState((prevState) => {
+				return { sortedPhones: prevState.phones, optionValue: 'All' };
+			});
+
+			// this.setState({ sortedPhones: oldState.phones, optionValue: 'All' });
 		}
 	};
 
 	getLowestPrice = (val) => {
 		// console.log('In the Lowest Prcie');
+		const oldState = { ...this.state };
 		if (val) {
-			const oldState = { ...this.state };
 			const getLowestPrice = oldState.phones.sort((phn1, phn2) => phn1.field.price - phn2.field.price);
 			// console.log(getLowestPrice);
 			this.setState({ sortedPhones: getLowestPrice });
 			// console.log(this.state.phones);
 		} else {
-			this.setState({ sortedPhones: data });
+			this.setState((prevState) => {
+				return { sortedPhones: prevState.phones };
+			});
+			// this.setState({ sortedPhones: oldState.phones });
 		}
 	};
 	getHighestPrice = (val) => {
+		const oldState = { ...this.state };
 		if (val) {
-			const oldState = { ...this.state };
 			const getHighestPrice = oldState.phones.sort((phn1, phn2) => phn2.field.price - phn1.field.price);
 			this.setState({ sortedPhones: getHighestPrice });
 		} else {
-			this.setState({ sortedPhones: data });
+			this.setState((prevState) => {
+				return { sortedPhones: prevState.phones };
+			});
+			// this.setState({ sortedPhones: oldState.phones });
 		}
 	};
 
 	getFreeDelivery = (val) => {
+		const oldState = { ...this.state };
 		if (val) {
-			const oldState = { ...this.state };
 			const freeDeliveryPhones = oldState.phones.filter((phn) => phn.field.freeDelivery);
 			// console.log(freeDeliveryPhones);
 			this.setState({ sortedPhones: freeDeliveryPhones });
 		} else {
-			this.setState({ sortedPhones: data });
+			this.setState((prevState) => {
+				return { sortedPhones: prevState.phones };
+			});
+			// this.setState({ sortedPhones: oldState.phones });
 		}
 	};
 	getPopularPhones = (val) => {
+		const oldState = { ...this.state };
 		if (val) {
-			const oldState = { ...this.state };
 			const popularPhones = oldState.phones.filter((phn) => phn.field.featured);
 			// console.log(popularPhones);
 			this.setState({ sortedPhones: popularPhones });
 		} else {
-			this.setState({ sortedPhones: data });
+			this.setState((prevState) => {
+				return { sortedPhones: prevState.phones };
+			});
+			// this.setState({ sortedPhones: oldState.phones });
 		}
 	};
 

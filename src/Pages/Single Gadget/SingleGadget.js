@@ -3,12 +3,23 @@ import Banner from '../../Components/Banner/Banner';
 import StyledHero from '../../Components/StyledHero/StyleHero';
 import { PhoneContext } from '../../Context';
 import Info from '../../Components/Info/Info';
+import Loading from '../../Components/Loading/Loading';
+import { Redirect } from 'react-router-dom';
 
 const SingleGadget = (props) => {
-	const { getPhones } = useContext(PhoneContext);
+	const { getPhones, loading } = useContext(PhoneContext);
+
 	const singlePhone = getPhones(props.match.params.slug);
-	// console.log(singlePhone);
-	const { RAM, Warranty, description, extras, freeDelivery, images, name, price } = singlePhone.field;
+
+	if (loading) {
+		return <Loading />;
+	}
+
+	if (!loading && !singlePhone) {
+		return <Redirect to="/error" />;
+	}
+
+	const { ram, warranty, description, extras, freeDelivery, images, name, price } = singlePhone.field;
 
 	let singleImages = images.map((img, index) => {
 		return <img src={img} alt="PhoneImage" key={index} />;
@@ -32,8 +43,8 @@ const SingleGadget = (props) => {
 				description={description}
 				price={price}
 				phoneExtras={phoneExtras}
-				RAM={RAM}
-				Warranty={Warranty}
+				RAM={ram}
+				Warranty={warranty}
 				freeDelivery={freeDelivery}
 			/>
 		</React.Fragment>
