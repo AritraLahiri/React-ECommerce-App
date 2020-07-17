@@ -11,7 +11,7 @@ function Home() {
 				<Banner
 					heading="the future is here"
 					subHeading="Premium gadgets starting at 10,0000"
-					to="/gadget"
+					to="/phone"
 					btnName="Our Products"
 				/>
 			</Hero>
