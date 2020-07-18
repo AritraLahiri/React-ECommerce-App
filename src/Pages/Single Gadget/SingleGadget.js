@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Banner from '../../Components/Banner/Banner';
 import StyledHero from '../../Components/StyledHero/StyleHero';
 import { PhoneContext } from '../../Context';
 import Info from '../../Components/Info/Info';
@@ -19,7 +18,7 @@ const SingleGadget = (props) => {
 		return <Redirect to="/error" />;
 	}
 
-	const { ram, warranty, description, extras, freeDelivery, images, name, price } = singlePhone.field;
+	const { ram, warranty, description, extras, freeDelivery, images,  price } = singlePhone.field;
 
 	let singleImages = images.map((img, index) => {
 		return <img src={img} alt="PhoneImage" key={index} />;
@@ -35,9 +34,7 @@ const SingleGadget = (props) => {
 
 	return (
 		<React.Fragment>
-			<StyledHero img={images[0]}>
-				<Banner heading={name} to="/" btnName="back home" />
-			</StyledHero>
+			<StyledHero img={images[0]}>{/* <Banner heading={name} to="/" btnName="back home" /> */}</StyledHero>
 			<Info
 				singleImages={singleImages}
 				description={description}

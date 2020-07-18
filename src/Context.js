@@ -11,6 +11,8 @@ class PhoneProvider extends Component {
 		sortedPhones: [],
 		optionValue: 'all',
 		loading: true,
+		currentCheckBox: true,
+		allCheckBox: false,
 		isSortOpen: true
 	};
 
@@ -97,6 +99,7 @@ class PhoneProvider extends Component {
 			const getLowestPrice = oldState.phones.sort((phn1, phn2) => phn1.field.price - phn2.field.price);
 			// console.log(getLowestPrice);
 			this.setState({ sortedPhones: getLowestPrice });
+
 			// console.log(this.state.phones);
 		} else {
 			this.setState((prevState) => {
@@ -158,7 +161,7 @@ class PhoneProvider extends Component {
 		// console.log(type);
 		// console.log(name);
 
-		if (name === 'lowestPrice') this.getLowestPrice(value);
+		if (name === 'lowestPrice') this.getLowestPrice(value, event);
 		else if (name === 'highestPrice') this.getHighestPrice(value);
 		else if (name === 'freeDelivery') this.getFreeDelivery(value);
 		else if (name === 'popular') this.getPopularPhones(value);
@@ -185,6 +188,4 @@ class PhoneProvider extends Component {
 	}
 }
 
-const PhoneConsumer = PhoneContext.Consumer;
-
-export { PhoneProvider, PhoneConsumer, PhoneContext };
+export { PhoneProvider, PhoneContext };
