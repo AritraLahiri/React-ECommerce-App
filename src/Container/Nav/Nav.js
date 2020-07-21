@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navitems from './NavItems/Navitems';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-function Nav() {
+function Nav({ cart }) {
 	const [ Nav, setNav ] = useState({
 		isOpen: false
 	});
@@ -26,9 +26,14 @@ function Nav() {
 				<Link to="/phone">
 					<Navitems>Phones</Navitems>
 				</Link>
+				<Link to="/gadget/checkout">
+					<Navitems>
+						MyCart <span className="cart-items-span">{cart.length > 0 ? cart.length : null}</span>{' '}
+					</Navitems>
+				</Link>
 			</div>
 		</div>
 	);
 }
 
-export default Nav;
+export default React.memo(Nav);

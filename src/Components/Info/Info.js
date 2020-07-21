@@ -1,5 +1,5 @@
 import React from 'react';
-
+import SmallButtton from '../SmallButton/SmallButtton';
 const Info = (props) => {
 	return (
 		<section className="single-phone">
@@ -24,6 +24,10 @@ const Info = (props) => {
 			<div className="extras-section">
 				<h2>extras</h2>
 				<div className="phone-extras">{props.phoneExtras}</div>
+			</div>
+
+			<div className="cart-section">
+				<SmallButtton name="add to cart" classStyle="cart-btn" addCart={() => props.cart(props.phones)} />
 			</div>
 		</section>
 	);
