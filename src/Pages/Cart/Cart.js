@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { BsTrashFill } from 'react-icons/bs';
 
 import { PhoneContext } from '../../Context';
 import MyCart from '../../Components/Cart/MyCart';
@@ -42,7 +43,7 @@ const Cart = () => {
 						</button>
 					</div>
 					<div className="cart-column-head">
-						<h3 className="product-details">remove</h3>
+						<BsTrashFill onClick={() => removeFromCart(items)} className="cart-item-rem-icon" />
 					</div>
 					<div className="cart-column-head">
 						<h3 className="product-details-total"> &#8377; {totalPrice}</h3>
