@@ -51,9 +51,41 @@ const Cart = () => {
 			);
 		});
 
+	const phoneItems = sortedCart.map((items) => {
+		let phoneName = items.field.name;
+		let originalPrice = items.field.price;
+		let quantityInMobile = cart.filter((ele) => {
+			return ele === items;
+		}).length;
+		let totalPrice = quantityInMobile * originalPrice;
+
+		return (
+			<React.Fragment key={items.id}>
+				<div className="cart-column-head">
+					<h3 className="product-details">{phoneName}</h3>
+				</div>
+
+				<div className="cart-summary">
+					<div className="cart-column-head-quantity">
+						<button className="btn-qt btn-remove" onClick={() => removeFromCart(items)}>
+							-
+						</button>
+						<button className="btn-qt btn-qtn"> {quantityInMobile}</button>
+						<button className="btn-qt btn-add" onClick={() => addToCart(items)}>
+							+
+						</button>
+					</div>
+					<div className="cart-column-head">
+						<h3 className="product-details-total"> &#8377; {totalPrice}</h3>
+					</div>
+				</div>
+			</React.Fragment>
+		);
+	});
+
 	const componentToShow =
 		cart.length > 0 ? (
-			<MyCart cartItems={allItems} clear={clearAllCart} subTotal={subTotal} tax={tax} />
+			<MyCart cartItems={allItems} clear={clearAllCart} subTotal={subTotal} tax={tax} phoneItems={phoneItems} />
 		) : (
 			<EmptyCart />
 		);
