@@ -11,8 +11,7 @@ class PhoneProvider extends Component {
 		sortedPhones: [],
 		optionValue: 'all',
 		loading: true,
-		cart: [],
-		isSortOpen: true
+		cart: []
 	};
 
 	getData = async () => {
@@ -52,13 +51,6 @@ class PhoneProvider extends Component {
 
 		return data;
 	};
-
-	sortTogglerHandler = () => {
-		this.setState((prevState) => {
-			return { isSortOpen: !prevState.isSortOpen };
-		});
-	};
-
 	getPhones = (slug) => {
 		const oldState = { ...this.state };
 		const singlePhone = oldState.phones.find((phn) => phn.field.slug === slug);
@@ -201,7 +193,6 @@ class PhoneProvider extends Component {
 					addToCart: this.addToCart,
 					removeFromCart: this.removeFromCart,
 					clearAllCart: this.clearAllCart,
-					sortTogglerHandler: this.sortTogglerHandler,
 					handleChange: this.handleChange
 				}}
 			>
