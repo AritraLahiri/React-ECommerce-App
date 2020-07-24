@@ -410,6 +410,9 @@ a {
 	margin-bottom: 10px;
 	color: #000000;
 }
+.right-info h6:nth-of-type(4) {
+	margin-bottom: 30px;
+}
 .extras-section {
 	width: 80%;
 	margin: 50px auto;
@@ -436,7 +439,6 @@ a {
 	line-height: 29px;
 	letter-spacing: 0.03em;
 	text-transform: capitalize;
-
 	color: #000000;
 }
 
@@ -448,13 +450,13 @@ a {
 	align-items: center;
 }
 .cart-btn {
-	width: 20%;
+	width: 200px;
 	height: 55px;
 	border-radius: 15px;
 	outline: none;
 	border: none;
 	background-color: var(--secondaryColor);
-	font-size: 20px;
+	font-size: 23px;
 	text-transform: capitalize;
 	letter-spacing: 3px;
 	cursor: pointer;
@@ -462,6 +464,32 @@ a {
 	color: var(--white);
 	text-align: center;
 	padding: 10px;
+	text-align: center;
+}
+.cart-btn-buy {
+	width: 250px;
+	height: 58px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background: var(--primaryColor);
+	font-size: 25px;
+	text-transform: capitalize;
+	letter-spacing: 3px;
+	cursor: pointer;
+	transition: 0.3s all ease-in;
+	color: var(--white);
+	text-align: center;
+	padding: 10px;
+	text-align: center;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+	text-transform: uppercase;
+}
+.cart-btn-buy:hover {
+	border: 1px solid #2e64f0;
+	color: #2e64f0;
+
+	background-color: #eeee;
 }
 
 .btn-cart {
@@ -482,7 +510,7 @@ a {
 		flex-direction: column-reverse;
 	}
 	.phone-extras {
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	}
 	.right-info h6 {
 		margin-bottom: 2px;
@@ -493,10 +521,12 @@ a {
 		margin: 20px 0;
 	}
 	.cart-btn {
-		height: 100%;
 		width: 100%;
-		padding: 20px;
 	}
+	.cart-btn-buy {
+		width: 100%;
+	}
+
 	.btn-home {
 		height: auto;
 		width: 50%;
@@ -593,6 +623,9 @@ a {
 }
 .cart-btn-icon {
 	font-size: 30px;
+}
+.cart-btn-basket {
+	font-size: 25px;
 	margin-left: 10px;
 }
 
@@ -659,8 +692,6 @@ a {
 	font-weight: 500;
 	font-size: 23px;
 	line-height: 28px;
-	/* identical to box height */
-
 	letter-spacing: 0.15em;
 	text-transform: uppercase;
 	text-shadow: 0px 9px 4px rgba(0, 0, 0, 0.25);
@@ -803,9 +834,6 @@ a {
 	}
 	.cart-btn {
 		height: 55px;
-		padding: 10px;
-		width: auto;
-		margin: auto;
 	}
 	.sub-total {
 		margin: 0px 30px;

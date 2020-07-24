@@ -17,6 +17,12 @@ const Info = (props) => {
 						<h6>Ram: {props.RAM} GB</h6>
 						<h6>delivery: {props.freeDelivery ? 'free' : '50'}</h6>
 						<h6>Warranty: {props.Warranty} years </h6>
+						<SmallButtton
+							name="add to cart"
+							to="#"
+							classStyle="cart-btn"
+							addCart={() => props.cart(props.phones)}
+						/>
 					</div>
 				</div>
 			</div>
@@ -27,7 +33,12 @@ const Info = (props) => {
 			</div>
 
 			<div className="cart-section">
-				<SmallButtton name="add to cart" classStyle="cart-btn" addCart={() => props.cart(props.phones)} />
+				<SmallButtton
+					name="buy now"
+					to="/gadget/checkout"
+					classStyle="cart-btn-buy"
+					addCart={() => props.cart(props.phones)}
+				/>
 			</div>
 		</section>
 	);
