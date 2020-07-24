@@ -9,6 +9,7 @@ class PhoneProvider extends Component {
 		phones: [],
 		featured: [],
 		sortedPhones: [],
+		searchResult: [],
 		optionValue: 'all',
 		loading: true,
 		cart: []
@@ -25,7 +26,13 @@ class PhoneProvider extends Component {
 
 			const featuredPhones = phones.filter((phone) => phone.field.featured);
 
-			this.setState({ featured: featuredPhones, sortedPhones: phones, phones, loading: false });
+			this.setState({
+				featured: featuredPhones,
+				sortedPhones: phones,
+				phones,
+				searchResult: phones.slice(0, 8),
+				loading: false
+			});
 		} catch (error) {
 			console.log(error);
 			this.setState({ loading: true });
@@ -63,6 +70,22 @@ class PhoneProvider extends Component {
 
 		oldCart.push(item);
 		this.setState({ cart: oldCart });
+	};
+
+	searchPhones = (phnName) => {
+		if (phnName === '') {
+			this.setState((prevState) => {
+				return { searchResult: prevState.phones.slice(0, 8) };
+			});
+			return;
+		}
+		const oldState = { ...this.state };
+
+		const searched = oldState.phones.filter((phn) => {
+			return phn.field.name.toLowerCase().indexOf(phnName) !== -1;
+		});
+
+		this.setState({ searchResult: searched });
 	};
 
 	removeFromCart = (item) => {
@@ -191,6 +214,7 @@ class PhoneProvider extends Component {
 					...this.state,
 					getPhones: this.getPhones,
 					addToCart: this.addToCart,
+					searchPhones: this.searchPhones,
 					removeFromCart: this.removeFromCart,
 					clearAllCart: this.clearAllCart,
 					handleChange: this.handleChange

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navitems from './NavItems/Navitems';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { FiShoppingCart } from 'react-icons/fi';
 function Nav({ cart }) {
 	const [ Nav, setNav ] = useState({
 		isOpen: false
@@ -28,7 +29,8 @@ function Nav({ cart }) {
 				</Link>
 				<Link to="/gadget/checkout">
 					<Navitems>
-						MyCart <span className="cart-items-span">{cart.length > 0 ? cart.length : null}</span>{' '}
+						<FiShoppingCart className="cart-icon" />
+						<span className="cart-items-span">{cart.length > 0 ? cart.length : null}</span>{' '}
 					</Navitems>
 				</Link>
 			</div>

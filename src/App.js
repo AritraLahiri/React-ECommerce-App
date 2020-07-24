@@ -8,6 +8,8 @@ import SingleGadget from './Pages/Single Gadget/SingleGadget';
 import Error from './Pages/Error/Error';
 import Cart from './Pages/Cart/Cart';
 import { PhoneContext } from './Context';
+import SearchBox from './Components/SearchBox/SearchBox';
+import SearchPage from './Pages/SearchPage/SearchPage';
 
 function App() {
 	const { cart } = useContext(PhoneContext);
@@ -15,9 +17,11 @@ function App() {
 	return (
 		<React.Fragment>
 			<Nav cart={cart} />
+			<SearchBox />
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/phone" component={Gadgets} />
+				<Route exact path="/search" component={SearchPage} />
 				<Route exact path="/gadget/checkout" component={Cart} />
 				<Route exact path="/gadget/:slug" component={SingleGadget} />
 				<Route component={Error} />

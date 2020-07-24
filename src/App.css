@@ -14,6 +14,7 @@
 a {
 	text-decoration: none;
 	color: var(--white);
+	outline: none;
 }
 .Title {
 	font-style: normal;
@@ -35,7 +36,7 @@ a {
 	justify-content: space-around;
 	align-items: center;
 	transition: all 3.6s ease-in;
-	background: #f1e8e8;
+	background: var(--primaryColor);
 }
 .Links {
 	display: flex;
@@ -46,10 +47,11 @@ a {
 }
 .toggler {
 	display: none;
-	color: #000000;
+	color: var(--white);
 	font-weight: normal;
 	margin: 10px 0;
 	cursor: pointer;
+	font-size: 40px;
 }
 .nav-items {
 	font-style: normal;
@@ -57,7 +59,12 @@ a {
 	font-size: 22px;
 	line-height: 32px;
 	letter-spacing: 0.03em;
-	color: #000000;
+	color: var(--white);
+}
+
+.cart-icon {
+	font-size: 35px;
+	color: var(--white);
 }
 .Logo {
 	font-style: normal;
@@ -65,7 +72,7 @@ a {
 	font-size: 29px;
 	line-height: 57px;
 	letter-spacing: 0.15em;
-	color: var(--primaryColor);
+	color: var(--white);
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 .logo-head {
@@ -85,16 +92,22 @@ a {
 	.container,
 	.Links {
 		flex-direction: column;
+		justify-content: space-between;
 	}
 	.close {
 		opacity: 0;
 		overflow-y: hidden;
 		max-height: 0;
 	}
+	.nav-items {
+		margin: 3px auto;
+	}
+
 	.Logo {
 		display: flex;
 		width: 100%;
 		justify-content: space-around;
+		align-items: center;
 	}
 }
 /* Navbar Style Ends */
@@ -436,7 +449,7 @@ a {
 }
 .cart-btn {
 	width: 20%;
-	height: 50px;
+	height: 55px;
 	border-radius: 15px;
 	outline: none;
 	border: none;
@@ -564,7 +577,7 @@ a {
 /* Cart styling starts here */
 
 .cart-items-span {
-	color: var(--secondaryColor);
+	color: #111010;
 	font-size: 26px;
 	font-weight: 900;
 }
@@ -573,6 +586,10 @@ a {
 	width: 90%;
 	height: 150vh;
 	margin: auto;
+}
+.cart-btn-icon {
+	font-size: 30px;
+	margin-left: 10px;
 }
 
 .cart-header {
@@ -670,6 +687,7 @@ a {
 .clear-btn button {
 	width: 273px;
 	height: 69px;
+	position: relative;
 	outline: none;
 	font-family: Nunito;
 	font-style: normal;
@@ -711,6 +729,7 @@ a {
 	text-transform: uppercase;
 	color: #000000;
 }
+
 .total-price {
 	font-family: Nunito;
 	font-style: normal;
@@ -778,6 +797,12 @@ a {
 	.total {
 		align-items: flex-start;
 	}
+	.cart-btn {
+		height: 55px;
+		padding: 10px;
+		width: auto;
+		margin: auto;
+	}
 	.sub-total {
 		margin: 0px 30px;
 	}
@@ -800,3 +825,76 @@ a {
 }
 
 /* Cart styling ends here */
+
+/* Search styling starts here */
+
+.search-section {
+	width: 100%;
+	height: auto;
+	padding: 10px;
+	background-color: var(--primaryColor);
+	display: flex;
+	justify-content: center;
+}
+.search {
+	border-radius: 3px solid #666666;
+	height: 100%;
+	width: 90%;
+	padding: 1px 20px;
+	border-radius: 12px;
+	background-color: #ffff;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.input {
+	flex-grow: 1;
+}
+.search-input {
+	height: auto;
+	outline: none;
+	border: none;
+	padding: 20px;
+	font-size: 20px;
+	width: 100%;
+}
+.search-logo {
+	font-size: 30px;
+	color: #666666;
+}
+::placeholder {
+	font-size: 25px;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+}
+
+.search-not-found {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+.search-not-found-icon {
+	font-size: 400px;
+	color: #ccc;
+}
+.search-not-found h1 {
+	color: #ccc;
+	font-size: 60px;
+	letter-spacing: 6px;
+	font-weight: 500;
+}
+
+@media (max-width: 760px) {
+	::placeholder {
+		font-size: 20px;
+	}
+	.search {
+		width: 100%;
+	}
+}
+
+/* Search styling ends here */
