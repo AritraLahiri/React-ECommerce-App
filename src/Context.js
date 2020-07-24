@@ -82,7 +82,7 @@ class PhoneProvider extends Component {
 		const oldState = { ...this.state };
 
 		const searched = oldState.phones.filter((phn) => {
-			return phn.field.name.toLowerCase().indexOf(phnName) !== -1;
+			return phn.field.name.toLowerCase().indexOf(phnName.toLowerCase()) !== -1;
 		});
 
 		this.setState({ searchResult: searched });

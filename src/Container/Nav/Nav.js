@@ -30,7 +30,9 @@ function Nav({ cart }) {
 				<Link to="/gadget/checkout">
 					<Navitems>
 						<FiShoppingCart className="cart-icon" />
-						<span className="cart-items-span">{cart.length > 0 ? cart.length : null}</span>{' '}
+						<span className={cart.length > 0 ? 'cart-items-span' : ''}>
+							{cart.length > 0 ? cart.length : null}
+						</span>{' '}
 					</Navitems>
 				</Link>
 			</div>

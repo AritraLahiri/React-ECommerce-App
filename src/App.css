@@ -577,9 +577,13 @@ a {
 /* Cart styling starts here */
 
 .cart-items-span {
-	color: #111010;
+	color: var(--secondaryColor);
 	font-size: 26px;
 	font-weight: 900;
+	margin-left: 10px;
+	padding: 1px 6px;
+	background-color: #eeee;
+	border-radius: 15px;
 }
 
 .my-cart {
