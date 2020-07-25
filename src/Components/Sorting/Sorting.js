@@ -48,7 +48,7 @@ const Sorting = (props) => {
 
 	return (
 		<React.Fragment>
-			<label>{props.label}</label>
+			<label className="label-text">{props.label}</label>
 			{sortingBlocks}
 		</React.Fragment>
 	);

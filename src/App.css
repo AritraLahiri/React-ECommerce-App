@@ -576,6 +576,11 @@ a {
 	font-size: 20px;
 	margin: auto;
 }
+
+input[type="checkbox"] {
+	cursor: pointer;
+}
+
 @media (max-width: 760px) {
 	.sort-icon {
 		display: inline-block;
