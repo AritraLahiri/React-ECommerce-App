@@ -1,9 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { PhoneContext } from '../../Context';
 import { BsSearch } from 'react-icons/bs';
 
 const SearchBox = () => {
+	const clearInputRef = useRef(null);
+
+	const clearSearch = () => {
+		clearInputRef.current.value = '';
+	};
+
 	const { searchPhones } = useContext(PhoneContext);
 
 	const getValueFromUser = (e) => {
@@ -18,6 +24,8 @@ const SearchBox = () => {
 				<div className="input">
 					<Link to="/search">
 						<input
+							ref={clearInputRef}
+							onBlur={clearSearch}
 							type="text"
 							className="search-input"
 							onChange={(event) => getValueFromUser(event)}

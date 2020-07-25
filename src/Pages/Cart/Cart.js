@@ -5,7 +5,7 @@ import { PhoneContext } from '../../Context';
 import MyCart from '../../Components/Cart/MyCart';
 import EmptyCart from '../../Components/EmptyCart/EmptyCart';
 
-const Cart = () => {
+const Cart = ({ clrInput }) => {
 	let subTotal = 0;
 
 	const { cart, addToCart, removeFromCart, clearAllCart } = useContext(PhoneContext),
